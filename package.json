@@ -1,0 +1,20 @@
+{
+  "name": "convert-dictionary-to-tree",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node ./index.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.11.26",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.4.2"
+  },
+  "dependencies": {
+    "@hpcc-js/wasm": "^2.16.1"
+  }
+}
