@@ -5,6 +5,14 @@ import { join } from "path";
 export interface DictionaryTreeNode {
   [key: string]: any;
 }
+//colors used to style the tree svg
+const levelColors = [
+  { bgColor: "#D5E8D4", borderColor: "#83B467" },
+  { bgColor: "#DAE8FC", borderColor: "#7192C2" },
+  { bgColor: "#FFF2CC", borderColor: "#D6B656" },
+  { bgColor: "#F8CECC", borderColor: "#BD6460" },
+  //the most test has 4 levels, but i can define other colors
+];
 
 //image constructor
 export const constructSVGTreeImage = async (data: DictionaryTreeNode) => {
@@ -28,23 +36,34 @@ function createTreeDataFromDictionary(
   dictionary: DictionaryTreeNode,
   parentName: string
 ): string {
-  let dotSyntax = `digraph G {\n`;
-  const parseTree = (node: any, parentNode: string) => {
+  let dotSyntax = `digraph G {\nnode [style="filled", shape="ellipse", fontname="Helvetica"];\n`;
+
+  const parseTree = (node: any, parentNode: string, nodeDepth = 1) => {
+    const { bgColor, borderColor } = levelColors[nodeDepth] || {
+      bgColor: "white",
+      borderColor: "black",
+    };
+
     if (Array.isArray(node)) {
       node.forEach((child) => {
         if (typeof child === "object" && child !== null) {
           Object.entries(child).forEach(([childName, grandChild]) => {
             dotSyntax += `"${parentNode}" -> "${childName}";\n`;
-            parseTree(grandChild, childName);
+            //root color is always constant of colors
+            dotSyntax += `"${parentNode}" [fillcolor="${levelColors[0].bgColor}", color="${levelColors[0].borderColor}", penwidth=1, fontcolor="black"];\n`;
+            dotSyntax += `"${childName}" [fillcolor="${bgColor}", color="${borderColor}", penwidth=1, fontcolor="black"];\n`;
+            parseTree(grandChild, childName, nodeDepth + 1);
           });
         } else if (typeof child === "string" || typeof child === "number") {
           dotSyntax += `"${parentNode}" -> "${child}"\n`;
+          dotSyntax += `"${child}" [fillcolor="${bgColor}", color="${borderColor}", penwidth=1, fontcolor="black"];\n`;
         }
       });
     } else if (typeof node === "object" && node !== null) {
       Object.entries(node).forEach(([key, value]) => {
         dotSyntax += `"${parentNode}" -> "${key}";\n`;
-        parseTree(value, key);
+        dotSyntax += `"${key}" [fillcolor="${bgColor}", color="${borderColor}", penwidth=1, fontcolor="black"];\n`;
+        parseTree(value, key, nodeDepth + 1);
       });
     }
   };
