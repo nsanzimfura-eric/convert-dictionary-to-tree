@@ -7,6 +7,14 @@ import {
 
 //TESTS---
 
+// 0. example given
+const exampleGiven: DictionaryTreeNode = {
+  root: [
+    "rootName",
+    { p1: ["p1Name", { sp2: [1, 2], sp3: [3, 4] }] },
+    { p2: { ln: [5, 6], rn: "onlyChild" } },
+  ],
+};
 //a. Pass subtrees as dictionary
 const dictionary1: DictionaryTreeNode = {
   root: [
@@ -51,8 +59,13 @@ const dictionaryBonus4: DictionaryTreeNode = {
  */
 
 const testCreatingTreeImages = () => {
-  // a.
-  constructSVGTreeImage(dictionary1);
+  // 0
+  constructSVGTreeImage(exampleGiven);
+
+  //b.
+  setTimeout(() => {
+    constructSVGTreeImage(dictionary1);
+  }, 1000);
 
   //b.
   setTimeout(() => {

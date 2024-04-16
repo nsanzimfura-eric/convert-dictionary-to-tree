@@ -11,7 +11,7 @@ export const constructSVGTreeImage = async (data: DictionaryTreeNode) => {
   const graphviz = await Graphviz.load();
   const rootKey = Object.keys(data)[0];
   const dot = createTreeDataFromDictionary(data, rootKey);
-  const svg = graphviz.dot(dot);
+  const svg = await graphviz.dot(dot);
 
   //create new name using time, every time when this function runs
   const date = new Date();
@@ -29,23 +29,23 @@ function createTreeDataFromDictionary(
   parentName: string
 ): string {
   let dotSyntax = `digraph G {\n`;
-  const parseTree = (node: any, parentNode: string): void => {
+  const parseTree = (node: any, parentNode: string) => {
     if (Array.isArray(node)) {
       node.forEach((child) => {
         if (typeof child === "object" && child !== null) {
-          const childName = Object.keys(child)[0];
-          dotSyntax += `"${parentNode}" -> "${childName}";\n`;
-          parseTree(child[childName], childName);
+          Object.entries(child).forEach(([childName, grandChild]) => {
+            dotSyntax += `"${parentNode}" -> "${childName}";\n`;
+            parseTree(grandChild, childName);
+          });
         } else if (typeof child === "string" || typeof child === "number") {
-          const uniqueId = `${parentNode}_${child}`;
-          dotSyntax += `"${parentNode}" -> "${uniqueId}" [label="${child}"];\n`;
+          dotSyntax += `"${parentNode}" -> "${child}"\n`;
         }
       });
     } else if (typeof node === "object" && node !== null) {
-      for (const key in node) {
+      Object.entries(node).forEach(([key, value]) => {
         dotSyntax += `"${parentNode}" -> "${key}";\n`;
-        parseTree(node[key], key);
-      }
+        parseTree(value, key);
+      });
     }
   };
 
