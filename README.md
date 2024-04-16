@@ -19,7 +19,6 @@ tests(these are simply the 4 times where this function is being called), you can
  npm run start
 ```
 
-This command will immediately create images in `./src/trees` directory, and to view the images in the browser you will follow these simple steps:
+This command will immediately create images in `./src/trees` directory, and to view the images in the browser you will simply:
 
-1. on in the root directory in ./public folder and open index.html with liver server or simply with the browser.
-2. And Boom! You are viewing the images as SVGs showing tree diagram for the data given to the function.
+=> Go to the the home page: [http://localhost:8000/](http://localhost:8000/)and you will see the tree diagram images there.

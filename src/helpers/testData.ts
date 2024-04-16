@@ -46,8 +46,8 @@ const dictionaryBonus4: DictionaryTreeNode = {
  * STEPS TO TEST ----------------------------------------
  *
  * npm run start
- * After images the images are created, head over to the ./public folder
- * and open 'index.html' file in the browser and view images
+ * After images the images are created, head over to the http://localhost:8000/
+ * and open and see the images in the browser and view images
  */
 
 const testCreatingTreeImages = () => {
