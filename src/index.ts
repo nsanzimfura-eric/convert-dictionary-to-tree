@@ -17,7 +17,9 @@ async function constructSVGTreeImage(data: DictionaryTreeNode) {
   const dateString = `treeImage_${date.getMinutes()}_${date.getSeconds()}`;
   const filename = `${dateString}.svg`;
   await saveSvgToFile(svg, join(__dirname, "trees", filename));
-  console.log(`SVG has been saved as '${filename}' in the 'trees' directory.`);
+  console.log(
+    `SVG has been created and saved as '${filename}' in the './src/trees' directory.`
+  );
 }
 
 //image data creator
@@ -91,9 +93,19 @@ const dictionaryBonus4: DictionaryTreeNode = {
 };
 
 // function call to create tree using these data above
-//You will notice used Set-time out here, in order to create time interval difference
-//in these function calls so that i be able to create each svg image fileName with different names,
-//as I am using seconds to rename those image
+
+/**
+ * You will notice used SetTimeOut function here, in order to create time interval difference
+ * in these function calls so that I be able to create each svg image fileName with unique name,
+ * as I am using seconds to rename those images.
+ * Example filename: "image-1655306482.svg",  where '1655306482' represents the Unix timestamp.
+ *
+ * STEPS TO TEST ----------------------------------------
+ *
+ * npm run start
+ * After images the images are created, head over to the ./public folder
+ * and open 'index.html' file in the browser and view images
+ */
 
 // a.
 constructSVGTreeImage(dictionary1);
