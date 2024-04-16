@@ -42,10 +42,25 @@
   </head>
   <body>
     <main id="images"></main>
+    <h1>Image Gallery</h1>
     <script>
       //import the images from ./src/trees
       //   and display them in the browser window
       const images = document.getElementById("images");
+      async function loadImages() {
+        try {
+          const response = await fetch("/");
+          const imageFiles = await response.json();
+
+          images.innerHTML = imageFiles
+            .map((file) => `<img src="images/${file}">`)
+            .join("");
+        } catch (error) {
+          console.error("Error fetching images:", error);
+        }
+      }
+
+      loadImages();
     </script>
   </body>
 </html>
