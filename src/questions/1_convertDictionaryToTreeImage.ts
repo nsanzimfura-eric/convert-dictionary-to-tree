@@ -15,7 +15,10 @@ const levelColors = [
 ];
 
 //image constructor
-export const constructSVGTreeImage = async (data: DictionaryTreeNode) => {
+export const constructSVGTreeImage = async (
+  data: DictionaryTreeNode,
+  name: string = "treeImage"
+) => {
   const graphviz = await Graphviz.load();
   const rootKey = Object.keys(data)[0];
   const dot = createTreeDataFromDictionary(data, rootKey);
@@ -23,7 +26,7 @@ export const constructSVGTreeImage = async (data: DictionaryTreeNode) => {
 
   //create new name using time, every time when this function runs
   const date = new Date();
-  const dateString = `treeImage_${date.getMinutes()}_${date.getSeconds()}`;
+  const dateString = `${name}_${date.getMinutes()}_${date.getSeconds()}`;
   const filename = `${dateString}.svg`;
   await saveSvgToFile(svg, join(__dirname, "../trees", filename));
   console.log(

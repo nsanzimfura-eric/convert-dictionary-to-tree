@@ -1,9 +1,14 @@
 //This is only for calling the function that creates data;
 
+//QUESTION 1
 import {
   DictionaryTreeNode,
   constructSVGTreeImage,
-} from "./convertDictionaryToTreeImage";
+} from "../1_convertDictionaryToTreeImage";
+//QUESTION 2 A
+import { bottomUpLevelOrderTraversal } from "../2_a_bottomLevelUp";
+//QUESTION 2 B
+import { bottomUpLevelOrderTraversalWithSkip } from "./../2_b_skipLevelOnUserInput";
 
 //TESTS---
 
@@ -59,28 +64,36 @@ const dictionaryBonus4: DictionaryTreeNode = {
  */
 
 const testCreatingTreeImages = () => {
-  // 0
+  // TESTS:  0
+  // Question 1: -creating tree svg from dictionary
   constructSVGTreeImage(exampleGiven);
+  // Question 2 a: -- reverse
+  const bottomUpLevelOrder = bottomUpLevelOrderTraversal(exampleGiven);
+  constructSVGTreeImage(bottomUpLevelOrder, "reversedBottomUp");
 
-  //b.
-  setTimeout(() => {
-    constructSVGTreeImage(dictionary1);
-  }, 1000);
+  //Question 2 b: reverse with skill input given by the user
+  const skipAndReverse = bottomUpLevelOrderTraversalWithSkip(exampleGiven, 1); //skip the first
+  constructSVGTreeImage(skipAndReverse, "skipped1_reverse");
 
-  //b.
-  setTimeout(() => {
-    constructSVGTreeImage(dictionary2);
-  }, 2000);
+  //   //b.
+  //   setTimeout(() => {
+  //     constructSVGTreeImage(dictionary1);
+  //   }, 1000);
 
-  //c.
-  setTimeout(() => {
-    constructSVGTreeImage(dictionary3);
-  }, 3000);
+  //   //b.
+  //   setTimeout(() => {
+  //     constructSVGTreeImage(dictionary2);
+  //   }, 2000);
 
-  //d. --bonus
-  setTimeout(() => {
-    constructSVGTreeImage(dictionaryBonus4);
-  }, 4000);
+  //   //c.
+  //   setTimeout(() => {
+  //     constructSVGTreeImage(dictionary3);
+  //   }, 3000);
+
+  //   //d. --bonus
+  //   setTimeout(() => {
+  //     constructSVGTreeImage(dictionaryBonus4);
+  //   }, 4000);
 };
 
 export default testCreatingTreeImages;

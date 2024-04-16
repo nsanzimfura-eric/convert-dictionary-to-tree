@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import testCreatingTreeImages from "./helpers/testData";
+import testCreatingTreeImages from "./questions/tests/testAllQuestions";
 import path from "path";
 import fs from "fs";
 
