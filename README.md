@@ -22,3 +22,7 @@ tests(these are simply the 4 times where this function is being called), you can
 This command will immediately create images in `./src/trees` directory, and to view the images in the browser you will simply:
 
 => Go to the the home page: [http://localhost:8000/](http://localhost:8000/)and you will see the tree diagram images there.
+
+
+### OutPut images:
+![image](https://github.com/nsanzimfura-eric/convert-dictionary-to-tree/assets/91186046/66ede618-67dd-4603-af09-734cb30925b8)
