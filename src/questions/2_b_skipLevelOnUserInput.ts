@@ -10,15 +10,17 @@ export const bottomUpLevelOrderTraversalWithSkip = (
   let initialNodes = treeData[rootNode];
 
   let queue: Array<[string, any]> = [];
-  initialNodes.forEach((child: any) => {
-    if (typeof child === "object" && child !== null) {
-      Object.entries(child).forEach(([key, value]) => {
-        queue.push([key, value]);
-      });
-    } else {
-      queue.push([child, child]);
-    }
-  });
+  Array.isArray(initialNodes) &&
+    initialNodes?.length > 0 &&
+    initialNodes?.forEach((child: any) => {
+      if (typeof child === "object" && child !== null) {
+        Object.entries(child)?.forEach(([key, value]) => {
+          queue.push([key, value]);
+        });
+      } else {
+        queue.push([child, child]);
+      }
+    });
 
   let result: any[][] = [];
   let currentDepth = 0;
@@ -37,9 +39,9 @@ export const bottomUpLevelOrderTraversalWithSkip = (
       }
 
       if (Array.isArray(node)) {
-        node.forEach((child) => {
+        node?.forEach((child) => {
           if (typeof child === "object" && child !== null) {
-            Object.entries(child).forEach(([childName, grandChild]) => {
+            Object.entries(child)?.forEach(([childName, grandChild]) => {
               queue.push([childName, grandChild]);
             });
           } else {
@@ -47,7 +49,7 @@ export const bottomUpLevelOrderTraversalWithSkip = (
           }
         });
       } else if (typeof node === "object" && node !== null) {
-        Object.entries(node).forEach(([key, value]) => {
+        Object.entries(node)?.forEach(([key, value]) => {
           queue.push([key, value]);
         });
       }

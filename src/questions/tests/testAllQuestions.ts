@@ -66,68 +66,68 @@ const dictionaryBonus4: DictionaryTreeNode = {
 const testCreatingTreeImages = () => {
   // TESTS:  0
   // Question 1: -creating tree svg from dictionary
-  constructSVGTreeImage(exampleGiven);
+  constructSVGTreeImage(exampleGiven, "1_treeImage");
   // Question 2 a: -- reverse
   const bottomUpLevelOrder = bottomUpLevelOrderTraversal(exampleGiven);
-  constructSVGTreeImage(bottomUpLevelOrder, "reversedBottomUp");
+  constructSVGTreeImage(bottomUpLevelOrder, "2a_reversedBottomUp");
   //Question 2 b: reverse with skill input given by the user
   const skipAndReverse = bottomUpLevelOrderTraversalWithSkip(exampleGiven, 1); //skip the first
-  constructSVGTreeImage(skipAndReverse, "skipped1_reverse");
+  constructSVGTreeImage(skipAndReverse, "2b_skipped1_reverse");
 
   // TESTS:  a
 
-  setTimeout(() => {
-    // Question 1: -creating tree svg from dictionary
-    constructSVGTreeImage(dictionary1);
-    // Question 2 a: -- reverse
-    const bottomUpLevelOrder1 = bottomUpLevelOrderTraversal(dictionary1);
-    constructSVGTreeImage(bottomUpLevelOrder1, "reversedBottomUp");
-    //Question 2 b: reverse with skill input given by the user
-    const skipAndReverse1 = bottomUpLevelOrderTraversalWithSkip(dictionary1, 1); //skip the first
-    constructSVGTreeImage(skipAndReverse1, "skipped1_reverse");
-  }, 1000);
+  // setTimeout(() => {
+  //   // Question 1: -creating tree svg from dictionary
+  //   constructSVGTreeImage(dictionary1);
+  //   // Question 2 a: -- reverse
+  //   const bottomUpLevelOrder1 = bottomUpLevelOrderTraversal(dictionary1);
+  //   constructSVGTreeImage(bottomUpLevelOrder1, "reversedBottomUp");
+  //   //Question 2 b: reverse with skill input given by the user
+  //   const skipAndReverse1 = bottomUpLevelOrderTraversalWithSkip(dictionary1, 1); //skip the first
+  //   constructSVGTreeImage(skipAndReverse1, "skipped1_reverse");
+  // }, 1000);
 
-  // TESTS:  b
+  // // TESTS:  b
 
-  setTimeout(() => {
-    // Question 1: -creating tree svg from dictionary
-    constructSVGTreeImage(dictionary2);
-    // Question 2 a: -- reverse
-    const bottomUpLevelOrder2 = bottomUpLevelOrderTraversal(dictionary2);
-    constructSVGTreeImage(bottomUpLevelOrder2, "reversedBottomUp");
-    //Question 2 b: reverse with skill input given by the user
-    const skipAndReverse2 = bottomUpLevelOrderTraversalWithSkip(dictionary2, 1); //skip the first
-    constructSVGTreeImage(skipAndReverse2, "skipped1_reverse");
-  }, 2000);
+  // setTimeout(() => {
+  //   // Question 1: -creating tree svg from dictionary
+  //   constructSVGTreeImage(dictionary2);
+  //   // Question 2 a: -- reverse
+  //   const bottomUpLevelOrder2 = bottomUpLevelOrderTraversal(dictionary2);
+  //   constructSVGTreeImage(bottomUpLevelOrder2, "reversedBottomUp");
+  //   //Question 2 b: reverse with skill input given by the user
+  //   const skipAndReverse2 = bottomUpLevelOrderTraversalWithSkip(dictionary2, 1); //skip the first
+  //   constructSVGTreeImage(skipAndReverse2, "skipped1_reverse");
+  // }, 2000);
 
-  // TESTS:  c
+  // // TESTS:  c
 
-  setTimeout(() => {
-    // Question 1: -creating tree svg from dictionary
-    constructSVGTreeImage(dictionary3);
-    // Question 2 a: -- reverse
-    const bottomUpLevelOrder3 = bottomUpLevelOrderTraversal(dictionary3);
-    constructSVGTreeImage(bottomUpLevelOrder3, "reversedBottomUp");
-    //Question 2 b: reverse with skill input given by the user
-    const skipAndReverse1 = bottomUpLevelOrderTraversalWithSkip(dictionary3, 1); //skip the first
-    constructSVGTreeImage(skipAndReverse1, "skipped1_reverse");
-  }, 3000);
+  // setTimeout(() => {
+  //   // Question 1: -creating tree svg from dictionary
+  //   constructSVGTreeImage(dictionary3);
+  //   // Question 2 a: -- reverse
+  //   const bottomUpLevelOrder3 = bottomUpLevelOrderTraversal(dictionary3);
+  //   constructSVGTreeImage(bottomUpLevelOrder3, "reversedBottomUp");
+  //   //Question 2 b: reverse with skill input given by the user
+  //   const skipAndReverse1 = bottomUpLevelOrderTraversalWithSkip(dictionary3, 1); //skip the first
+  //   constructSVGTreeImage(skipAndReverse1, "skipped1_reverse");
+  // }, 3000);
 
-  // TESTS:  d - Bonus
+  // // TESTS:  d - Bonus
 
-  setTimeout(() => {
-    // Question 1: -creating tree svg from dictionary
-    constructSVGTreeImage(dictionary1);
-    // Question 2 a: -- reverse
-    const bottomUpLevelOrder4 = bottomUpLevelOrderTraversal(dictionaryBonus4);
-    constructSVGTreeImage(bottomUpLevelOrder4, "reversedBottomUp");
-    //Question 2 b: reverse with skill input given by the user
-    const skipAndReverse4 = bottomUpLevelOrderTraversalWithSkip(
-      dictionaryBonus4,
-      1
-    ); //skip the first
-    constructSVGTreeImage(skipAndReverse4, "skipped1_reverse");
-  }, 4000);
+  // setTimeout(() => {
+  //   // Question 1: -creating tree svg from dictionary
+  //   constructSVGTreeImage(dictionary1);
+  //   // Question 2 a: -- reverse
+  //   const bottomUpLevelOrder4 = bottomUpLevelOrderTraversal(dictionaryBonus4);
+  //   constructSVGTreeImage(bottomUpLevelOrder4, "reversedBottomUp");
+  //   //Question 2 b: reverse with skill input given by the user
+  //   const skipAndReverse4 = bottomUpLevelOrderTraversalWithSkip(
+  //     dictionaryBonus4,
+  //     1
+  //   ); //skip the first
+  //   constructSVGTreeImage(skipAndReverse4, "skipped1_reverse");
+  // }, 4000);
 };
 
 export default testCreatingTreeImages;
