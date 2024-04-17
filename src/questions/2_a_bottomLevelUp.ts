@@ -3,45 +3,36 @@ import { DictionaryTreeNode } from "./1_convertDictionaryToTreeImage";
 export const bottomUpLevelOrderTraversal = (
   treeData: DictionaryTreeNode
 ): any[] => {
-  if (Object.keys(treeData).length === 0) return [];
-
-  let queue: [string, any][] = [
-    [Object.keys(treeData)[0], treeData[Object.keys(treeData)[0]]],
-  ];
-  let result: any[][] = [];
+  const queue: [any, number][] = [[treeData.root, 0]];
+  const results: any[][] = [];
 
   while (queue.length > 0) {
-    let levelLength = queue.length;
-    let currentLevel = [];
+    const dequeued = queue.shift();
+    if (!dequeued) continue;
+    const [node, level] = dequeued;
 
-    for (let i = 0; i < levelLength; i++) {
-      let item = queue.shift();
-      if (item === undefined) continue;
-      let [nodeName, node] = item;
-
-      currentLevel.push(nodeName);
-
-      if (Array.isArray(node)) {
-        node.forEach((child) => {
-          if (typeof child === "object" && child !== null) {
-            Object.entries(child).forEach(([childName, grandChild]) => {
-              queue.push([childName, grandChild]);
-            });
-          } else {
-            queue.push([`${child}`, child]);
-          }
-        });
-      } else if (typeof node === "object" && node !== null) {
-        Object.entries(node).forEach(([key, value]) => {
-          queue.push([key, value]);
-        });
-      }
+    while (results.length <= level) {
+      results.push([]);
     }
 
-    if (currentLevel.length > 0) {
-      result.push(currentLevel);
+    if (Array.isArray(node)) {
+      for (const item of node) {
+        if (typeof item === "string" || typeof item === "number") {
+          results[level].push(item);
+        } else if (typeof item === "object" && !Array.isArray(item)) {
+          for (const [key, value] of Object.entries(item)) {
+            queue.push([value, level + 1]);
+            results[level].push(key);
+          }
+        }
+      }
+    } else if (typeof node === "object" && !Array.isArray(node)) {
+      for (const [key, value] of Object.entries(node)) {
+        queue.push([value, level + 1]);
+        results[level].push(key);
+      }
     }
   }
 
-  return result.reverse();
+  return results.reverse().filter((layer) => layer.length > 0);
 };
